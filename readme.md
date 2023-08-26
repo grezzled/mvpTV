@@ -66,7 +66,7 @@ npm start
 ```
 ## Authors
 
-- [Akram](https://github.com/akram37)
+- [Akram Mhamdi](https://github.com/akram37)
 - [Soufiane Belchhab](https://github.com/grezzled)
 - [Brahim Elkaceh](https://github.com/brahimelkaceh)
 - [Walid Bouhsin](https://github.com/WalidBouhsin9)

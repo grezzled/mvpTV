@@ -17,50 +17,50 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 #### Get latest movies
 
 ```http
-  GET /api/movies/now-playing${page}
+  GET /api/movies/now-playing?page=${page}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Required**. page number to fetch |
+| `page`      | `string` | **Optional**. page number to fetch |
 
 #### Get popular movies 
 
 ```http
-  GET /api/movies/popular
+  GET /api/movies/popular?page=${page}
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Required**. page number to fetch |
+| `page`      | `string` | **Optional**. page number to fetch |
 
 #### Get top rated movies 
 
 ```http
-  GET /api/movies/top_rated
+  GET /api/movies/top_rated?page=${page}
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Required**. page number to fetch |
+| `page`      | `string` | **Optional**. page number to fetch |
 
 #### Get upcoming movies 
 
 ```http
-  GET /api/movies/upcoming
+  GET /api/movies/upcoming?page=${page}
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Required**. page number to fetch |
+| `page`      | `string` | **Optional**. page number to fetch |
 
 
 #### Get movie
 
 ```http
-  GET /api/movies/${id}
+  GET /api/movies/movie?id=${id}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+| `id`      | `number` | **Required**. Id of item to fetch |
 
 
 

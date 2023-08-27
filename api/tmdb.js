@@ -32,7 +32,9 @@ const buildImgUrl = (rootImgUrl, size, id) => {
   return `${rootImgUrl}${size}${id}`
 }
 
-const buildUrl = (rootURl, path, page) => {
+const buildUrl = (rootURl, path, page, search = "") => {
+  if (search !== "")
+    return `${rootURl}${path}&page=${page}&query=${search}`
   return `${rootURl}${path}&page=${page}`
 }
 
@@ -64,7 +66,8 @@ const endPoints = {
   NOW_PLAYING: 'movie/now_playing?language=en-US&region=US',
   POPULAR: 'movie/popular?language=en-US&region=US',
   TOP_RATED: 'movie/top_rated?language=en-US&region=US',
-  UPCOMING: 'movie/upcoming?language=en-US&egion=US'
+  UPCOMING: 'movie/upcoming?language=en-US&region=US',
+  SEARCH: 'search/movie?include_adult=false&language=en-US&region=US'
 }
 
 /* MOVIE OBJECT END POINT EXAMPLE
@@ -103,10 +106,10 @@ const buildMovie = (e) => {
   }
 }
 
-const buildMovieList = async (endPoint, page) => {
+const buildMovieList = async (endPoint, page, search = "") => {
   try {
     const data = await fetchData(
-      buildUrl(rootURl, endPoint, page),
+      buildUrl(rootURl, endPoint, page, search),
       buildOptions('GET', process.env.TMDB_AUTH)
     )
     const arrData = data.results

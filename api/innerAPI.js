@@ -17,4 +17,8 @@ const upcoming = (page = 1) => {
     return buildMovieList(endPoints.UPCOMING, page)
 }
 
-module.exports = { nowPlaying, popular, topRated, upcoming }
+const search = (page =1, query) => {
+    return buildMovieList(endPoints.SEARCH, page, query)
+}
+
+module.exports = { nowPlaying, popular, topRated, upcoming, search }

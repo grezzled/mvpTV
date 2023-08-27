@@ -72,7 +72,6 @@ const makeServer = {
             route.cb(req, res, getQuery(req.url));
           }
           if (route.path === "/api" && requestedPath.startsWith('/api')) {
-            console.log('API FOUND')
             pageFound = true
             route.cb(req, res, getQuery(req.url));
           }

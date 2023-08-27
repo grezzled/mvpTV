@@ -8,12 +8,13 @@ myServer.listen(PORT, () => {
     console.info('server started at http://localhost:3000')
 })
 
-myServer.getList(['', '/', '/index', '/index.html', '/home'], (req, res, params) => {
-    returnHTMLPage('./public/index.html', res)
-})
+// myServer.getList(['', '/', '/index', '/index.html', '/home'], (req, res, params) => {
+//     returnHTMLPage('./public/index.html', res)
+// })
 
 myServer.get('/movie', (req, res, params) => {
-    returnHTMLPage('./public/movie.html', res)
+    // console.log(__dirname + '/public/movie.html')
+    returnHTMLPage(__dirname + '/public/movie.html', res)
 })
 
 myServer.get('/search', (req, res, params) => {

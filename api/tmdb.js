@@ -29,7 +29,7 @@ const movie_genres = [
 ]
 
 const buildImgUrl = (rootImgUrl, size, id) => {
-  return `${rootImgUrl}${size}/${id}`
+  return `${rootImgUrl}${size}${id}`
 }
 
 const buildUrl = (rootURl, path, page) => {
@@ -61,8 +61,8 @@ console.log(getGenreNameById(80))
 
 
 const endPoints = {
-  nowPlaying: 'movie/now_playing?language=en-US&region=US',
-  popular: '',
+  NOW_PLAYING: 'movie/now_playing?language=en-US&region=US',
+  POPULAR: '',
   topRated: '',
   upcoming: ''
 }
@@ -103,20 +103,26 @@ const buildMovie = (e) => {
   }
 }
 
-const buildMovieList = (endPoint, page) => {
-  fetchData(
-    buildUrl(rootURl, endPoint, page),
-    buildOptions('GET', process.env.TMDB_AUTH)
-  ).then(data => {
+const buildMovieList = async (endPoint, page) => {
+  try {
+    const data = await fetchData(
+      buildUrl(rootURl, endPoint, page),
+      buildOptions('GET', process.env.TMDB_AUTH)
+    )
     const arrData = data.results
     const movieList = []
     arrData.forEach(e => {
       const movie = buildMovie(e)
       movieList.push(movie)
-    });
-    // console.log (JSON.stringify(movieList));
+    })
     return JSON.stringify(movieList)
-  })
+  } catch (err) {
+    return (err)
+  }
 }
 
-buildMovieList(endPoints.nowPlaying, 1)
+
+// TODO embed credits in the returned movie list
+
+
+module.exports = { buildMovieList, endPoints }

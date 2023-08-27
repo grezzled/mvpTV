@@ -1,5 +1,6 @@
 require('dotenv').config()
-const { buildServer, returnHTMLPage} = require('./utils/easyServer')
+const { buildServer, returnHTMLPage, returnJSON } = require('./utils/easyServer')
+const { nowPlaying } = require('./api/innerAPI')
 
 const myServer = buildServer()
 const PORT = process.env.PORT || 3000
@@ -15,7 +16,13 @@ myServer.get('/movie', (req, res, params) => {
     returnHTMLPage('./public/movie.html', res)
 })
 
-myServer.get('/api/', (req, res, params) => {
-    
+myServer.get('/search', (req, res, params) => {
+    returnHTMLPage('./public/search.html', res)
+})
+
+myServer.getAPI('/api/now-playing', (req, res, params) => {
+    nowPlaying().then(data => {
+        returnJSON(data, res)
+    })
 })
 

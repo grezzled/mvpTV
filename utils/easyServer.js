@@ -17,6 +17,18 @@ const returnHTMLPage = (path, res) => {
   })
 }
 
+const returnJSON = (data, res) => {
+  res.setHeader('Content-Type', 'application/json')
+  try {
+    JSON.parse(data) // check if json is valid
+    res.writeHead(200)
+    res.end(data)
+  } catch (error) {
+    res.writeHead(500, { 'Content-Type': 'text/plain' });
+    res.end('JSON: Internal Server Error');
+  }
+}
+
 const _returnResources = (req, res) => {
   const fileExtensions = {
     '.html': 'text/html',
@@ -41,6 +53,7 @@ const _returnResources = (req, res) => {
   })
 }
 
+
 /* Looks at this object b7ala raha class with _build hia lconstructor
    and ${server} & ${routes} are properties and the rest are methods of the class
 */
@@ -54,15 +67,20 @@ const makeServer = {
         const requestedPath = getPath(req.url);
         let pageFound = false
         this.routes.forEach(route => {
+          if (route.path === "/public" && requestedPath.startsWith('/public')) {
+            pageFound = true
+            route.cb(req, res, getQuery(req.url));
+          }
+          if (route.path === "/api" && requestedPath.startsWith('/api')) {
+            console.log('API FOUND')
+            pageFound = true
+            route.cb(req, res, getQuery(req.url));
+          }
           if (requestedPath === route.path) {
             pageFound = true
             route.cb(req, res, getQuery(req.url));
           }
-          if(route.path === "/public" && requestedPath.startsWith('/public')){
-            pageFound = true
-            route.cb(req, res, getQuery(req.url));
-          }
-        });
+        })
         if (!pageFound) {
           res.writeHead(404, { 'Content-Type': 'text/plain' });
           res.end('Page Not Found');
@@ -97,6 +115,11 @@ const makeServer = {
     return this
   },
 
+  getAPI(path, cb) {
+    this.routes.push({ path, cb })
+    return this
+  },
+
   post() {
     // Add implementation for post route if needed
   }
@@ -111,4 +134,4 @@ function buildServer() {
 }
 
 
-module.exports = { buildServer, returnHTMLPage}
+module.exports = { buildServer, returnHTMLPage, returnJSON }

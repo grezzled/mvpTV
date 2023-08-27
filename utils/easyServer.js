@@ -1,6 +1,6 @@
 const http = require('http')
 const path = require('path');
-const { getFile, getPath, getQuery } = require('../helpers')
+const { getFile, getPath, getQuery } = require('./helpers')
 
 
 const returnHTMLPage = (path, res) => {
@@ -26,7 +26,6 @@ const _returnResources = (req, res) => {
 
   const filePath = '.' + req.url;
 
-  console.log(filePath)
   const extname = path.extname(filePath);
 
   res.setHeader('Content-Type', fileExtensions[extname] || 'text/plain');
@@ -42,6 +41,9 @@ const _returnResources = (req, res) => {
   })
 }
 
+/* Looks at this object b7ala raha class with _build hia lconstructor
+   and ${server} & ${routes} are properties and the rest are methods of the class
+*/
 const makeServer = {
   server: null,
   routes: [],

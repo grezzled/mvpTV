@@ -1,7 +1,8 @@
-const { buildServer, returnHTMLPage, returnResources } = require('./utils/httpHelper')
+require('dotenv').config()
+const { buildServer, returnHTMLPage} = require('./utils/easyServer')
+
 const myServer = buildServer()
 const PORT = process.env.PORT || 3000
-
 myServer.listen(PORT, () => {
     console.info('server started at http://localhost:3000')
 })

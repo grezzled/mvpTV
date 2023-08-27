@@ -23,5 +23,8 @@ const getQuery = (uri) => {
     return query
 }
 
+const fetchData = (link, callback)=>{
+    
+}
 
 module.exports = { getFile, getPath, getQuery }

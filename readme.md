@@ -17,31 +17,54 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 #### Get latest movies
 
 ```http
-  GET /api/movies/latest
+  GET /api/movies/now-playing?page=${page}
 ```
-#### Get poular movies 
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `number` | **Optional**. page number to fetch |
+
+#### Get popular movies 
 
 ```http
-  GET /api/movies/poular
+  GET /api/movies/popular?page=${page}
 ```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `number` | **Optional**. page number to fetch |
 
 #### Get top rated movies 
 
 ```http
-  GET /api/movies/topRated
+  GET /api/movies/top_rated?page=${page}
 ```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `number` | **Optional**. page number to fetch |
 
-#### Get movies on award
+#### Get upcoming movies 
 
 ```http
-  GET /api/movies/moviesOnAward
+  GET /api/movies/upcoming?page=${page}
 ```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `number` | **Optional**. page number to fetch |
 
-
-#### Get movie
+#### Get movies by a search query 
 
 ```http
-  GET /api/movies/${id}
+  GET /api/movies/search?query=${query}&page=${page}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `query`      | `string` | **Required**. search query |
+| `page`      | `number` | **Optional**. page number to fetch |
+
+#### Get movie by id
+
+```http
+  GET /api/movies/movie?id=${id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -64,7 +87,7 @@ Start the project
 ```bash
 npm start
 ```
-## Authors
+## Collaborators
 
 - [Akram Mhamdi](https://github.com/akram37)
 - [Soufiane Belchhab](https://github.com/grezzled)

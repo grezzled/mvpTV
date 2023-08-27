@@ -28,12 +28,32 @@ const movie_genres = [
   { id: 37, name: "Western" }
 ]
 
+const endPoints = {
+  NOW_PLAYING: 'movie/now_playing?language=en-US&region=US',
+  POPULAR: 'movie/popular?language=en-US&region=US',
+  TOP_RATED: 'movie/top_rated?language=en-US&region=US',
+  UPCOMING: 'movie/upcoming?language=en-US&region=US',
+  SEARCH: 'search/movie?include_adult=false&language=en-US&region=US',
+  MOVIE: 'movie'
+}
+
 const buildImgUrl = (rootImgUrl, size, id) => {
   return `${rootImgUrl}${size}${id}`
 }
 
-const buildUrl = (rootURl, path, page) => {
+const buildUrl = (rootURl, path, page, search = "") => {
+  if (search !== "")
+    return `${rootURl}${path}&page=${page}&query=${search}`
   return `${rootURl}${path}&page=${page}`
+}
+
+const buildUrlV2 = (rootURl, path, params) => {
+  let query = ""
+  Object.entries(params).forEach(([key, value]) => {
+    query += `&${key}=${value}`
+  })
+  query = query.substring(1)
+  return `${rootURl}${path}${query !== "" ? "&" + query : ""}`
 }
 
 const buildOptions = (httpMethod, token, payload) => {
@@ -60,12 +80,6 @@ const getGenreNameById = (id) => {
 console.log(getGenreNameById(80))
 
 
-const endPoints = {
-  NOW_PLAYING: 'movie/now_playing?language=en-US&region=US',
-  POPULAR: '',
-  topRated: '',
-  upcoming: ''
-}
 
 /* MOVIE OBJECT END POINT EXAMPLE
 {
@@ -89,7 +103,7 @@ const endPoints = {
     },
 */
 
-const buildMovie = (e) => {
+const makeMovie = (e) => {
   return {
     id: e.id,
     title: e.title,
@@ -103,26 +117,57 @@ const buildMovie = (e) => {
   }
 }
 
-const buildMovieList = async (endPoint, page) => {
+const makeApendedMovie = (e) => {
+  return {
+    id: e.id,
+    title: e.title,
+    overview: e.overview,
+    releaseDate: e.release_date,
+    vote: e.vote_average,
+    voteCount: e.vote_count,
+    backdrop: buildImgUrl(rootImgUrl, backdrop_sizes.original, e.backdrop_path),
+    poster: buildImgUrl(rootImgUrl, poster_sizes.original, e.poster_path)
+  }
+}
+
+const buildMovieList = async (endPoint, params = {}) => {
   try {
+    console.log(buildUrlV2(rootURl, endPoint, params))
+
     const data = await fetchData(
-      buildUrl(rootURl, endPoint, page),
+      buildUrlV2(rootURl, endPoint, params),
       buildOptions('GET', process.env.TMDB_AUTH)
     )
     const arrData = data.results
     const movieList = []
     arrData.forEach(e => {
-      const movie = buildMovie(e)
+      const movie = makeMovie(e)
       movieList.push(movie)
     })
     return JSON.stringify(movieList)
   } catch (err) {
+    console.log(err)
+    return (err)
+  }
+}
+
+const buildMovie = async (endPoint, params = {}) => {
+  try {
+    const data = await fetchData(
+      buildUrlV2(rootURl, endPoint, params),
+      buildOptions('GET', process.env.TMDB_AUTH)
+    )
+    const movie = makeApendedMovie(data)
+    return JSON.stringify(movie)
+  } catch (err) {
+    console.log(err)
     return (err)
   }
 }
 
 
+
 // TODO embed credits in the returned movie list
 
 
-module.exports = { buildMovieList, endPoints }
+module.exports = { buildMovieList, buildMovie, endPoints }

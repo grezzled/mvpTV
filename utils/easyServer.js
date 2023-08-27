@@ -20,12 +20,13 @@ const returnHTMLPage = (path, res) => {
 const returnJSON = (data, res) => {
   res.setHeader('Content-Type', 'application/json')
   try {
+    // console.log(data)
     JSON.parse(data) // check if json is valid
     res.writeHead(200)
     res.end(data)
   } catch (error) {
     res.writeHead(500, { 'Content-Type': 'text/plain' });
-    res.end('JSON: Internal Server Error');
+    res.end('JSON: Internal Server Error' + error);
   }
 }
 

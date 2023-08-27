@@ -62,9 +62,9 @@ console.log(getGenreNameById(80))
 
 const endPoints = {
   NOW_PLAYING: 'movie/now_playing?language=en-US&region=US',
-  POPULAR: '',
-  topRated: '',
-  upcoming: ''
+  POPULAR: 'movie/popular?language=en-US&region=US',
+  TOP_RATED: 'movie/top_rated?language=en-US&region=US',
+  UPCOMING: 'movie/upcoming?language=en-US&egion=US'
 }
 
 /* MOVIE OBJECT END POINT EXAMPLE

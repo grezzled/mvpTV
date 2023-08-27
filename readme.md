@@ -17,25 +17,39 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 #### Get latest movies
 
 ```http
-  GET /api/movies/latest
+  GET /api/movies/now-playing${page}
 ```
-#### Get poular movies 
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `string` | **Required**. page number to fetch |
+
+#### Get popular movies 
 
 ```http
-  GET /api/movies/poular
+  GET /api/movies/popular
 ```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `string` | **Required**. page number to fetch |
 
 #### Get top rated movies 
 
 ```http
-  GET /api/movies/topRated
+  GET /api/movies/top_rated
 ```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `string` | **Required**. page number to fetch |
 
-#### Get movies on award
+#### Get upcoming movies 
 
 ```http
-  GET /api/movies/moviesOnAward
+  GET /api/movies/upcoming
 ```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `page`      | `string` | **Required**. page number to fetch |
 
 
 #### Get movie

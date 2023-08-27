@@ -4,6 +4,17 @@ const nowPlaying = (page = 1) => {
     return buildMovieList(endPoints.NOW_PLAYING, page)
 }
 
+const popular = (page = 1) => {
+    return buildMovieList(endPoints.POPULAR, page)
+}
+
+const topRated = (page = 1) => {
+    return buildMovieList(endPoints.TOP_RATED, page)
+}
 
 
-module.exports = { nowPlaying }
+const upcoming = (page = 1) => {
+    return buildMovieList(endPoints.UPCOMING, page)
+}
+
+module.exports = { nowPlaying, popular, topRated, upcoming }

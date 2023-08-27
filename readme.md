@@ -22,7 +22,7 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Optional**. page number to fetch |
+| `page`      | `number` | **Optional**. page number to fetch |
 
 #### Get popular movies 
 
@@ -31,7 +31,7 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Optional**. page number to fetch |
+| `page`      | `number` | **Optional**. page number to fetch |
 
 #### Get top rated movies 
 
@@ -40,7 +40,7 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Optional**. page number to fetch |
+| `page`      | `number` | **Optional**. page number to fetch |
 
 #### Get upcoming movies 
 
@@ -49,7 +49,7 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Optional**. page number to fetch |
+| `page`      | `number` | **Optional**. page number to fetch |
 
 
 #### Get movie
@@ -60,7 +60,7 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `number` | **Required**. Id of item to fetch |
+| `id`      | `string` | **Required**. Id of item to fetch |
 
 
 
@@ -78,7 +78,7 @@ Start the project
 ```bash
 npm start
 ```
-## Authors
+## Collaborators
 
 - [Akram Mhamdi](https://github.com/akram37)
 - [Soufiane Belchhab](https://github.com/grezzled)

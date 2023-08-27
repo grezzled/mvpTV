@@ -17,7 +17,8 @@ myServer.get('/movie', (req, res, params) => {
     returnHTMLPage(__dirname + '/public/movie.html', res)
 })
 
-myServer.get('/search', (req, res, params) => {
+myServer.get('/api/movies/movie', (req, res, params) => {
+    
     returnHTMLPage('./public/search.html', res)
 })
 

@@ -54,14 +54,14 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 #### Get movies by a search query 
 
 ```http
-  GET /api/movies/movie?query=${query}&page=${page}
+  GET /api/movies/search?query=${query}&page=${page}
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `query`      | `string` | **Required**. search query |
 | `page`      | `number` | **Optional**. page number to fetch |
 
-#### Get movie
+#### Get movie by id
 
 ```http
   GET /api/movies/movie?id=${id}

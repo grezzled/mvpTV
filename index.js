@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { buildServer, returnHTMLPage, returnJSON } = require('./utils/easyServer')
-const { nowPlaying, popular, topRated, upcoming, search } = require('./api/innerAPI')
+const { nowPlaying, popular, topRated, upcoming, search, movie } = require('./api/innerAPI')
 
 const myServer = buildServer()
 const PORT = process.env.PORT || 3000
@@ -38,8 +38,15 @@ myServer.getAPI('/api/movies/upcoming', (req, res, params) => {
     })
 })
 
-myServer.get('/api/movies/movie', (req, res, params) => {
+myServer.get('/api/movies/search', (req, res, params) => {
     search(params.page ?? 1, params.query).then(data => {
         returnJSON(data, res)
     })
 })
+
+myServer.get('/api/movies/movie', (req, res, params) => {
+    movie(params.id).then(data => {
+        returnJSON(data, res)
+    })
+})
+

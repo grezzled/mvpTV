@@ -3,13 +3,17 @@ const path = require('path');
 const { getFile, getPath, getQuery } = require('./helpers')
 
 
-const returnHTMLPage = (path, res) => {
+
+
+const returnHTMLPage = (path, res, dataToInject = "") => {
 
   res.setHeader('Content-Type', 'text/html')
 
   getFile(path).then((data) => {
+    console.log(data)
     res.writeHead(200)
     res.write(data)
+    res.write(dataToInject)
     res.end()
   }).catch((err) => {
     res.writeHead(500, { 'Content-Type': 'text/plain' });

@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { deprecate } = require('util')
 const { fetchData } = require('./helpers')
 
 const rootURl = 'https://api.themoviedb.org/3/'
@@ -42,6 +43,7 @@ const buildImgUrl = (rootImgUrl, size, id) => {
 }
 
 const buildUrl = (rootURl, path, page, search = "") => {
+
   if (search !== "")
     return `${rootURl}${path}&page=${page}&query=${search}`
   return `${rootURl}${path}&page=${page}`
@@ -157,6 +159,8 @@ const buildMovie = async (endPoint, params = {}) => {
       buildUrlV2(rootURl, endPoint, params),
       buildOptions('GET', process.env.TMDB_AUTH)
     )
+
+    console.log(data)
     const movie = makeApendedMovie(data)
     return JSON.stringify(movie)
   } catch (err) {

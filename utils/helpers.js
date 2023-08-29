@@ -28,7 +28,7 @@ const fetchData = (link, callback) => {
 }
 
 const buildJSONElement = (idElement, data) => {
-    return `<script defer type="application/json" id="${idElement}">${data}</script>`
+    return `<script type="application/json" id="${idElement}">${data}</script>`
 }
 
 module.exports = { getFile, getPath, getQuery, buildJSONElement }

@@ -93,23 +93,6 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script src="../public/js/swiper.js"></script>
   <script src="../public/js/main.js"></script>
-  <script>
-    document.getElementById('fetchButton').addEventListener('click', fetchData);
-
-    function fetchData() {
-      fetch('/api/movies/search?query=%22glide%22')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('output').innerHTML = `
-                        <h2>${data[0].title}</h2>
-                        <p>${datap[0].id}</p>
-                    `;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-    }
-  </script>
 </body>
 
 </html>

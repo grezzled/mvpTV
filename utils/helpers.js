@@ -23,8 +23,12 @@ const getQuery = (uri) => {
     return query
 }
 
-const fetchData = (link, callback)=>{
-    
+const fetchData = (link, callback) => {
+
 }
 
-module.exports = { getFile, getPath, getQuery }
+const buildJSONElement = (idElement, data) => {
+    return `<script type="application/json" id="${idElement}">${data}</script>`
+}
+
+module.exports = { getFile, getPath, getQuery, buildJSONElement }

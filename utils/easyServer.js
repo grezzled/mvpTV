@@ -12,8 +12,8 @@ const returnHTMLPage = (path, res, dataToInject = "") => {
   getFile(path).then((data) => {
     console.log(data)
     res.writeHead(200)
-    res.write(data)
     res.write(dataToInject)
+    res.write(data)
     res.end()
   }).catch((err) => {
     res.writeHead(500, { 'Content-Type': 'text/plain' });

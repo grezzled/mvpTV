@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP-TV</title>
+
+    
+    <link rel="stylesheet" href="../public/css/style.css">
+    
+</head>
+
+<body>
+
+    <div class="movie-section-container">
+      <h2>Just Released</h2>
+      <swiper-container id="released-movies-swiper" grab-cursor="true" init="false">
+        <!-- here addNewReleasedMovie add the movies for us -->
+      </swiper-container>
+  </div>
+
+  <div class="movie-section-container">
+      <h2>Popular of the week</h2>
+      <swiper-container id="popular-movies-swiper" grab-cursor="true" init="false">
+        <!-- here addPopularMovie add the movies for us -->
+      </swiper-container>
+  </div>
+
+  <div class="movie-section-container">
+      <h2>Upcoming Movies</h2>
+      <swiper-container id="upcoming-movies-swiper" grab-cursor="true" init="false">
+          <!-- here addonotherMovie add the movies for us -->
+        </swiper-container>
+  </div>
+
+      
+      <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+      <script src="../public/js/main.js" defer></script>
+      
+
+</body>
+
+</html>

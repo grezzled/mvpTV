@@ -57,7 +57,6 @@ const buildUrlV2 = (rootURl, path, params) => {
     query += `&${key}=${value}`
   })
   query = query.substring(1)
-  console.log(`${rootURl}${path}${query !== "" ? "&" + query : ""}`)
   return `${rootURl}${path}${query !== "" ? "&" + query : ""}`
 }
 
@@ -82,7 +81,6 @@ const getGenreNameById = (id) => {
   return genre[0].name
 }
 
-console.log(getGenreNameById(80))
 
 
 
@@ -149,7 +147,6 @@ const makeApendedMovie = (e) => {
 
 const buildMovieList = async (endPoint, params = {}) => {
   try {
-    console.log(buildUrlV2(rootURl, endPoint, params))
     const data = await fetchData(
       buildUrlV2(rootURl, endPoint, params),
       buildOptions('GET', process.env.TMDB_AUTH)
@@ -162,7 +159,6 @@ const buildMovieList = async (endPoint, params = {}) => {
     })
     return JSON.stringify(movieList)
   } catch (err) {
-    console.log(err)
     return (err)
   }
 }
@@ -174,24 +170,20 @@ const buildMovie = async (endPoint, params = {}) => {
       buildOptions('GET', process.env.TMDB_AUTH)
     )
 
-    console.log(data)
     const movie = makeApendedMovie(data)
     return JSON.stringify(movie)
   } catch (err) {
-    console.log(err)
     return (err)
   }
 }
 
 const buildCreditList = async (endPoint, params = {}) => {
   try {
-    console.log(endPoint, params)
 
     const data = await fetchData(
       buildUrlV2(rootURl, endPoint, params),
       buildOptions('GET', process.env.TMDB_AUTH)
     )
-    console.log(data)
     const creditsList = []
     data.cast.forEach(e => {
       const credit = makeCredit(e)
@@ -200,7 +192,6 @@ const buildCreditList = async (endPoint, params = {}) => {
     })
     return JSON.stringify(creditsList)
   } catch (err) {
-    console.log(err)
     return (err)
   }
 }
@@ -221,7 +212,6 @@ const buildSimilarList = async (endPoint, params = {}) => {
     })
     return JSON.stringify(movieList)
   } catch (err) {
-    console.log(err)
     return (err)
   }
 }

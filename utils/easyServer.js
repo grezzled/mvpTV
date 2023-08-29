@@ -10,7 +10,6 @@ const returnHTMLPage = (path, res, dataToInject = "") => {
   res.setHeader('Content-Type', 'text/html')
 
   getFile(path).then((data) => {
-    console.log(data)
     res.writeHead(200)
     res.write(dataToInject)
     res.write(data)
@@ -24,7 +23,6 @@ const returnHTMLPage = (path, res, dataToInject = "") => {
 const returnJSON = (data, res) => {
   res.setHeader('Content-Type', 'application/json')
   try {
-    // console.log(data)
     JSON.parse(data) // check if json is valid
     res.writeHead(200)
     res.end(data)
@@ -74,7 +72,6 @@ const _returnResources = (req, res) => {
   res.setHeader('Content-Type', fileExtensions[extname] || 'text/plain');
 
   getFile(filePath).then((data) => {
-    console.log(filePath)
     res.writeHead(200)
     res.write(data)
     res.end()
@@ -135,7 +132,6 @@ const makeServer = {
   },
 
   get(path, cb) {
-    console.log(path)
     this.routes.push({ path, cb })
     return this;
   },

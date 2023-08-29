@@ -150,7 +150,6 @@ AddDataToSection("Upcoming");
 
 
 
-
   const swiperEl0 = document.querySelector('#released-movies-swiper')
     Object.assign(swiperEl0, {
         autoplay: {
@@ -213,8 +212,8 @@ const swiperEl2 = document.querySelector('#upcoming-movies-swiper')
           spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 3,
-          spaceBetween: 60,
+          slidesPerView: 4,
+          spaceBetween: 10,
         },
       },
     });

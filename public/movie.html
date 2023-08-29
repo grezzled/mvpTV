@@ -84,41 +84,10 @@
             <h4>Top Cast</h4>
             <div class="streamlist">
                 <div class="stream-brand">
-                    <div class="cast">
-                        <img src="../public/images/cast1.png" alt="" srcset="">
-                        <div class="name-job">
-                            <h4>Pedro Pascal</h4>
-                            <h6>Joel Miller</h6>
-                        </div>
-                    </div>
-                    <div class="cast">
-                        <img src="../public/images/cast1.png" alt="" srcset="">
-                        <div class="name-job">
-                            <h4>Pedro Pascal</h4>
-                            <h6>Joel Miller</h6>
-                        </div>
-                    </div>
-                    <div class="cast">
-                        <img src="../public/images/cast1.png" alt="" srcset="">
-                        <div class="name-job">
-                            <h4>Pedro Pascal</h4>
-                            <h6>Joel Miller</h6>
-                        </div>
-                    </div>
-                    <div class="cast">
-                        <img src="../public/images/cast1.png" alt="" srcset="">
-                        <div class="name-job">
-                            <h4>Pedro Pascal</h4>
-                            <h6>Joel Miller</h6>
-                        </div>
-                    </div>
-                    <div class="cast">
-                        <img src="../public/images/cast1.png" alt="" srcset="">
-                        <div class="name-job">
-                            <h4>Pedro Pascal</h4>
-                            <h6>Joel Miller</h6>
-                        </div>
-                    </div>
+
+                    <swiper-container id="cast-swiper" grab-cursor="true" init="false">
+                        <!-- here addPopularMovie add the movies for us -->
+                      </swiper-container>
                 </div>
             </div>
         </div>
@@ -184,7 +153,11 @@
         </div>
         <div class="streamlist">
             <div class="box-similar-movies">
-                <div class="similar-movie">
+
+                <swiper-container id="similar-movie-swiper" grab-cursor="true" init="false">
+                    <!-- here addPopularMovie add the movies for us -->
+                  </swiper-container>
+                <!-- <div class="similar-movie">
                     <img class="img-movie" src="../public/images/similar-movie.png" alt="">
                     <div class="title-desc">
                         <h4>TOP GUN:Maverick</h4>
@@ -243,7 +216,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -295,6 +268,9 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+    <script src="../public/js/movie.js"></script>
 </body>
 
 </html>

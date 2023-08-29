@@ -111,6 +111,7 @@ const makeMovie = (e) => {
     id: e.id,
     title: e.title,
     genres: e.genre_ids.map(e => { return getGenreNameById(e) }),
+    // genres:e.genre_ids,
     overview: e.overview,
     releaseDate: e.release_date,
     vote: e.vote_average,
@@ -136,6 +137,8 @@ const makeApendedMovie = (e) => {
   return {
     id: e.id,
     title: e.title,
+    // genres: e.genre_ids.map(e => { return getGenreNameById(e) }),
+    genre:e.genre_id,
     overview: e.overview,
     releaseDate: e.release_date,
     vote: e.vote_average,

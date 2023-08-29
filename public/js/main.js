@@ -16,7 +16,7 @@ swiperSlide.innerHTML = `
             </a>
             </span>
             <div class="movie-rating-genre">
-                <img src="./public/imgs/star.png" alt="" srcset="">
+                <img src="./public/images/star.svg" alt="" srcset="">
                 <span>${vote}</span>
                 <div>
                     <ul class="movie-genre">
@@ -62,7 +62,7 @@ swiperSlide.innerHTML = `
                     </ul>
                 </div>
                 <div class="popular-movie-rating">
-                    <img src="./public/imgs/star.png" alt="" srcset="">
+                    <img src="./public/images/star.svg" alt="" srcset="">
                     <span>${vote}</span>
                 </div>     
         </div>
@@ -93,7 +93,7 @@ function addUpcomingMovie(id,poster,title,vote,genres){
             </a>
             </span>
             <div class="movie-rating-genre">
-                <img src="./public/imgs/star.png" alt="" srcset="">
+                <img src="./public/images/star.svg" alt="" srcset="">
                 <span>${vote}</span>
                 <div>
                     <ul class="movie-genre">

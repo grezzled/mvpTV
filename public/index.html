@@ -2,42 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVP-TV</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MVP-TV</title>
 
-    
-    <link rel="stylesheet" href="../public/css/style.css">
-    
+
+  <link rel="stylesheet" href="../public/css/style.css">
+
 </head>
 
 <body>
+  <div class="hero">
 
-    <div class="movie-section-container">
-      <h2>Just Released</h2>
-      <swiper-container id="released-movies-swiper" grab-cursor="true" init="false">
-        <!-- here addNewReleasedMovie add the movies for us -->
-      </swiper-container>
+    <header>
+      <div class="logo">
+        <img src="../public/images/Logo.svg" alt="">
+      </div>
+      <ul class="links">
+
+        <li class="current-link">Home</li>
+        <li>Discover</li>
+        <li>Movies Release</li>
+        <li>Forum</li>
+        <li>About</li>
+
+      </ul>
+      <div class="buttons">
+        <img src="../public/images/search.svg" alt="">
+        <a href="" class="register">Sign Up</a>
+        <a href="" class="login">Login</a>
+      </div>
+    </header>
+
+    <div class="infos-movie">
+      <div class="details">
+        <div class="genre">Movie</div>
+        <div class="info-card">
+          <div class="title">Star Wars: The force Awaken</div>
+          <div class="details">2h40m • 2022 • Fantasy • Actions</div>
+          <div class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, eligendi.Lorem,
+            ipsum dolor sit amet consectetur adipisicing elit. Unde, eligendi.</div>
+        </div>
+        <div class="cta">
+          <div class="play-movie">
+            <img src="../public/images/play.svg" alt="">
+            <a href="">Watch Trailer</a>
+          </div>
+          <div class="add-watchlist">
+            <img src="../public/images/bookmark.svg" alt="">
+            <a href="">Add Watchlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="movie-section-container">
-      <h2>Popular of the week</h2>
-      <swiper-container id="popular-movies-swiper" grab-cursor="true" init="false">
-        <!-- here addPopularMovie add the movies for us -->
-      </swiper-container>
+    <h2>Just Released</h2>
+    <swiper-container id="released-movies-swiper" grab-cursor="true" init="false">
+      <!-- here addNewReleasedMovie add the movies for us -->
+    </swiper-container>
   </div>
 
   <div class="movie-section-container">
-      <h2>Upcoming Movies</h2>
-      <swiper-container id="upcoming-movies-swiper" grab-cursor="true" init="false">
-          <!-- here addonotherMovie add the movies for us -->
-        </swiper-container>
+    <h2>Popular of the week</h2>
+    <swiper-container id="popular-movies-swiper" grab-cursor="true" init="false">
+      <!-- here addPopularMovie add the movies for us -->
+    </swiper-container>
   </div>
 
-      
-      <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
-      <script src="../public/js/main.js" defer></script>
-      
+  <div class="movie-section-container">
+    <h2>Upcoming Movies</h2>
+    <swiper-container id="upcoming-movies-swiper" grab-cursor="true" init="false">
+      <!-- here addonotherMovie add the movies for us -->
+    </swiper-container>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+  <script src="../public/js/main.js" defer></script>
+
 
 </body>
 

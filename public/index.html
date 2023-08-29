@@ -7,6 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/style2.css">
+
+    <!-- akram style -->
+    <link rel="stylesheet" href="../public/css/akstyle.css">
+    <!-- akram style -->
 </head>
 
 <body>
@@ -56,7 +60,30 @@
         </div>
     </div>
 
-    <div class="featured-container" id="featured-container">
+    <div class="movie-section-container">
+      <h2>Just Released</h2>
+      <swiper-container id="released-movies-swiper" grab-cursor="true" init="false">
+        <!-- here addNewReleasedMovie add the movies for us -->
+      </swiper-container>
+  </div>
+
+  <div class="movie-section-container">
+      <h2>Popular of the week</h2>
+      <swiper-container id="popular-movies-swiper" grab-cursor="true" init="false">
+        <!-- here addPopularMovie add the movies for us -->
+      </swiper-container>
+  </div>
+
+  <div class="movie-section-container">
+      <h2>Movies</h2>
+      <swiper-container id="other-movies-swiper" grab-cursor="true" init="false">
+          <!-- here addonotherMovie add the movies for us -->
+        </swiper-container>
+
+  </div>
+
+
+    <!-- <div class="featured-container" id="featured-container">
         <img id="movie-image" src="" alt="" />
         <div class="overlay"></div>
         <div class="featured-content">
@@ -80,18 +107,22 @@
               watchlist
             </button>
           </div>
-        </div>
+        </div> -->
   
-        <div id="swiperContainer" class="swiper mySwiper featured-carousel">
+        <!-- <div id="swiperContainer" class="swiper mySwiper featured-carousel">
           <div class="swiper-wrapper"></div>
           <div class="swiper-btn swiper-button-next"></div>
           <div class="swiper-btn swiper-button-prev"></div>
-        </div>
+        </div> -->
       </div>
       <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-      <script src="../public/js/swiper.js"></script>
-      <script src="../public/js/main.js"></script>
+      <script src="../public/js/swiper.js" defer></script>
+      <script src="../public/js/main.js" defer></script>
 
+      <!-- akram scripts -->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+      <script src="../public/js/akscript.js" defer></script>
+      <!-- akram scripts -->
 </body>
 
 </html>

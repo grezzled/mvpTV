@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../public/css/style.css">
+    <title>Movie</title>
+    <link rel="stylesheet" href="../public/css/style-b.css">
+    <link rel="stylesheet" href="../public/css/style-w.css">
 </head>
 
 <body>
@@ -17,13 +18,11 @@
                 <img src="../public/images/Logo.svg" alt="">
             </div>
             <ul class="links">
-
-                <li class="current-link">Home</li>
-                <li>Discover</li>
-                <li>Movies Release</li>
-                <li>Forum</li>
-                <li>About</li>
-
+                <li class="current-link"><a href="home"> Home</a></li>
+                <li><a href="#">Discover</a></li>
+                <li><a href="#">Movies Release</a></li>
+                <li><a href="#">Forum</a></li>
+                <li><a href="#">About</a></li>
             </ul>
             <div class="buttons">
                 <img src="../public/images/search.svg" alt="">
@@ -87,7 +86,7 @@
 
                     <swiper-container id="cast-swiper" grab-cursor="true" init="false">
                         <!-- here addPopularMovie add the movies for us -->
-                      </swiper-container>
+                    </swiper-container>
                 </div>
             </div>
         </div>
@@ -156,7 +155,7 @@
 
                 <swiper-container id="similar-movie-swiper" grab-cursor="true" init="false">
                     <!-- here addPopularMovie add the movies for us -->
-                  </swiper-container>
+                </swiper-container>
                 <!-- <div class="similar-movie">
                     <img class="img-movie" src="../public/images/similar-movie.png" alt="">
                     <div class="title-desc">
@@ -270,7 +269,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
-    <script src="../public/js/movie.js"></script>
+    <script src="../public/js/movie.js" defer></script>
 </body>
 
 </html>

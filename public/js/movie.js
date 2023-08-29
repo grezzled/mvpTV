@@ -13,7 +13,7 @@ function addMovie(movie){
 
 function addCast(cast){
     // Create the cast div
-const castDiv = document.createElement('div');
+const castDiv = document.createElement("swiper-slide");
 castDiv.classList.add('cast');
 
 // Create the image element
@@ -31,7 +31,7 @@ const h4 = document.createElement('h4');
 h4.textContent = cast.name;
 
 const h6 = document.createElement('h6');
-h6.textContent = cast.name;
+h6.textContent = cast.character;
 
 // Append h4 and h6 to the name-job div
 nameJobDiv.appendChild(h4);
@@ -53,10 +53,14 @@ topCastStreamBrand.appendChild(castDiv);
 }
 
 function addSimilarMovie(similarMovie){
-    genres=similarMovie.genres.slice(0,2);
-    // Create the similar-movie div
-const similarMovieDiv = document.createElement('div');
+  genres=similarMovie.genres.slice(0,2);
+  // Create the similar-movie div
+const similarMovieDiv = document.createElement("swiper-slide");
 similarMovieDiv.classList.add('similar-movie');
+
+const anchorElement = document.createElement("a");
+  anchorElement.href = `/movie?id=${similarMovie.id}`;
+
 
 // Create the img element
 const imgMovie = document.createElement('img');
@@ -89,6 +93,8 @@ imgStar.alt = '';
 const h4Rating = document.createElement('h4');
 h4Rating.textContent = similarMovie.vote;
 
+
+
 // Append img and h4 to rating div
 ratingDiv.appendChild(imgStar);
 ratingDiv.appendChild(h4Rating);
@@ -114,10 +120,13 @@ ratingGenreDiv.appendChild(genreDiv);
 titleDescDiv.appendChild(h4Title);
 titleDescDiv.appendChild(ratingGenreDiv);
 
+
+// 
 // Append img and title-desc div to similar-movie div
+similarMovieDiv.appendChild(anchorElement);
 similarMovieDiv.appendChild(imgMovie);
 similarMovieDiv.appendChild(titleDescDiv);
-
+anchorElement.appendChild(imgMovie);
 // Get the #similar-movie-swiper element
 const similarMovieSwiper = document.querySelector('#similar-movie-swiper');
 
@@ -138,16 +147,22 @@ for(let i=0;i<10;i++){
 }
 
 
-for(let i=0;i<5;i++){
-    addSimilarMovie(similarMovies[i])
-}
+// for(let i=0;i<5;i++){
+//     addSimilarMovie(similarMovies[i])
+// }
+
+similarMovies.forEach((movieData) => {
+  addSimilarMovie(movieData);
+});
 
 const swiperEl0 = document.querySelector('#cast-swiper')
+// console.log(swiperEl0);
 Object.assign(swiperEl0, {
-    autoplay: {
-      delay: 3500,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 3500,
+    //   disableOnInteraction: false,
+    // },
+    // navigation:"true",
     breakpoints: {
       640: {
         slidesPerView: 1,
@@ -158,7 +173,7 @@ Object.assign(swiperEl0, {
         spaceBetween: 40,
       },
       1024: {
-        slidesPerView: 3,
+        slidesPerView: 5,
         spaceBetween: 50,
       },
     },
@@ -171,6 +186,7 @@ Object.assign(swiperEl1, {
       delay: 3500,
       disableOnInteraction: false,
     },
+    // navigation:"true",
     breakpoints: {
       640: {
         slidesPerView: 1,
@@ -181,7 +197,7 @@ Object.assign(swiperEl1, {
         spaceBetween: 40,
       },
       1024: {
-        slidesPerView: 3,
+        slidesPerView: 4,
         spaceBetween: 50,
       },
     },

@@ -35,7 +35,9 @@ const endPoints = {
   TOP_RATED: 'movie/top_rated?language=en-US&region=US',
   UPCOMING: 'movie/upcoming?language=en-US&region=US',
   SEARCH: 'search/movie?include_adult=false&language=en-US&region=US',
-  MOVIE: 'movie'
+  MOVIE: 'movie',
+  CREDITS: 'credits',
+  
 }
 
 const buildImgUrl = (rootImgUrl, size, id) => {
@@ -55,6 +57,7 @@ const buildUrlV2 = (rootURl, path, params) => {
     query += `&${key}=${value}`
   })
   query = query.substring(1)
+  console.log(`${rootURl}${path}${query !== "" ? "&" + query : ""}`)
   return `${rootURl}${path}${query !== "" ? "&" + query : ""}`
 }
 
@@ -119,6 +122,18 @@ const makeMovie = (e) => {
   }
 }
 
+const makeCredit = (e) => {
+  if (e.profile_path !== null && e.known_for_department === 'Acting') {
+    return {
+      id: e.id,
+      name: e.name,
+      profile: buildImgUrl(rootImgUrl, backdrop_sizes.original, e.profile_path),
+      character: e.character
+    }
+  }
+  return false
+}
+
 const makeApendedMovie = (e) => {
   return {
     id: e.id,
@@ -135,7 +150,6 @@ const makeApendedMovie = (e) => {
 const buildMovieList = async (endPoint, params = {}) => {
   try {
     console.log(buildUrlV2(rootURl, endPoint, params))
-
     const data = await fetchData(
       buildUrlV2(rootURl, endPoint, params),
       buildOptions('GET', process.env.TMDB_AUTH)
@@ -169,9 +183,51 @@ const buildMovie = async (endPoint, params = {}) => {
   }
 }
 
+const buildCreditList = async (endPoint, params = {}) => {
+  try {
+    console.log(endPoint, params)
+
+    const data = await fetchData(
+      buildUrlV2(rootURl, endPoint, params),
+      buildOptions('GET', process.env.TMDB_AUTH)
+    )
+    console.log(data)
+    const creditsList = []
+    data.cast.forEach(e => {
+      const credit = makeCredit(e)
+      if (credit)
+        creditsList.push(credit)
+    })
+    return JSON.stringify(creditsList)
+  } catch (err) {
+    console.log(err)
+    return (err)
+  }
+}
+
+
+const buildSimilarList = async (endPoint, params = {}) => {
+  try {
+
+    const data = await fetchData(
+      buildUrlV2(rootURl, endPoint, params),
+      buildOptions('GET', process.env.TMDB_AUTH)
+    )
+    const arrData = data.results
+    const movieList = []
+    arrData.forEach(e => {
+      const movie = makeMovie(e)
+      movieList.push(movie)
+    })
+    return JSON.stringify(movieList)
+  } catch (err) {
+    console.log(err)
+    return (err)
+  }
+}
 
 
 // TODO embed credits in the returned movie list
 
 
-module.exports = { buildMovieList, buildMovie, endPoints }
+module.exports = { buildMovieList, buildMovie, endPoints, buildCreditList, buildSimilarList }

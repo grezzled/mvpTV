@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { buildServer, returnHTMLPage, returnJSON } = require('./utils/easyServer')
-const { nowPlaying, popular, topRated, upcoming, search, movie } = require('./api/innerAPI')
+const { nowPlaying, popular, topRated, upcoming, search, movie, credits, similar } = require('./api/innerAPI')
 const { buildJSONElement } = require('./utils/helpers')
 
 const myServer = buildServer()
@@ -20,6 +20,8 @@ myServer.getList(['', '/', '/index', '/index.html', '/home'], async (req, res, p
 
 myServer.get('/movie', async (req, res, params) => {
     let jsonElements = buildJSONElement('movie-details-data', await movie(params.id))
+    jsonElements += buildJSONElement('movie-credits-data', await credits(params.id))
+    jsonElements += buildJSONElement('movie-similar-data', await similar(params.id))
     returnHTMLPage('./public/movie.html', res, jsonElements)
 })
 
@@ -61,3 +63,14 @@ myServer.get('/api/movies/movie', (req, res, params) => {
     })
 })
 
+myServer.get('/api/movie/credits', (req, res, params) => {
+    credits(params.id).then(data => {
+        returnJSON(data, res)
+    })
+})
+
+myServer.get('/api/movie/similar', (req, res, params) => {
+    similar(params.id, params.page ?? 1).then(data => {
+        returnJSON(data, res)
+    })
+})

@@ -1,4 +1,4 @@
-const { buildMovieList, endPoints, buildMovie } = require('./tmdb')
+const { buildMovieList, endPoints, buildMovie, buildCreditList, buildSimilarList } = require('./tmdb')
 
 const nowPlaying = (page = 1) => {
     return buildMovieList(endPoints.NOW_PLAYING, { page: page })
@@ -25,4 +25,12 @@ const movie = (id) => {
     return buildMovie(`${endPoints.MOVIE}/${id}`)
 }
 
-module.exports = { nowPlaying, popular, topRated, upcoming, search, movie }
+const credits = (id) => {
+    return buildCreditList(`movie/${id}/credits`)
+}
+
+const similar = (id, page = 1) => {
+    return buildSimilarList(`movie/${id}/similar?`, { page: page })
+}
+
+module.exports = { nowPlaying, popular, topRated, upcoming, search, movie, credits, similar }

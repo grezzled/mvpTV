@@ -71,6 +71,25 @@ Feel free to examine the implemented logic within the `utils` folder to get an u
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of item to fetch |
 
+#### Get credits by movie id
+
+```http
+  GET /api/movie/credits?id=${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
+#### Get similar movies
+
+```http
+  GET /api/movie/similar?id=${id}&page=${page}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. movie id |
+| `page`      | `number` | **Optional**. page number to fetch |
 
 
 ## Installation
